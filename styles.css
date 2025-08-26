@@ -27,6 +27,16 @@ body {
     overflow-x: hidden;
 }
 
+/* Prevent horizontal scroll on mobile */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -72,6 +82,9 @@ p {
     z-index: 1000;
     transition: var(--transition);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    min-height: 70px;
+    display: flex;
+    align-items: center;
 }
 
 .nav-container {
@@ -348,8 +361,11 @@ p {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .service-card {
@@ -405,8 +421,11 @@ p {
 
 .properties-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .property-card {
@@ -637,58 +656,149 @@ p {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 80px;
+        top: 70px;
         flex-direction: column;
         background-color: var(--background-white);
         width: 100%;
         text-align: center;
         transition: 0.3s;
         box-shadow: var(--shadow);
-        padding: 2rem 0;
+        padding: 1.5rem 0;
+        z-index: 999;
     }
 
     .nav-menu.active {
         left: 0;
     }
 
+    .nav-menu li {
+        margin: 0.5rem 0;
+    }
+
+    .hero {
+        padding-top: 80px;
+        min-height: auto;
+        padding-bottom: 60px;
+    }
+
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 2rem;
+        gap: 3rem;
+        padding: 2rem 20px;
+    }
+
+    .hero-text {
+        order: 2;
+    }
+
+    .hero-image {
+        order: 1;
     }
 
     .hero-stats {
         justify-content: center;
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .about {
+        padding: 60px 0;
     }
 
     .about-content {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 3rem;
+    }
+
+    .about-image {
+        order: -1;
+        margin-bottom: 2rem;
+    }
+
+    .image-frame {
+        width: 280px;
+        height: 350px;
+        margin: 0 auto;
     }
 
     .contact-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .services {
+        padding: 60px 0;
     }
 
     .services-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .properties {
+        padding: 60px 0;
     }
 
     .properties-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .contact {
+        padding: 60px 0;
     }
 
     .hero-buttons {
         justify-content: center;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
     }
 
     .btn-primary, .btn-secondary {
-        min-width: 200px;
+        width: 100%;
+        max-width: 280px;
+        padding: 12px 20px;
     }
 
     .profile-photo {
-        width: 300px;
-        height: 300px;
+        width: 280px;
+        height: 280px;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
+        padding: 0 1rem;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .language-tags, .culture-tags {
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .tag {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
     }
 }
 
@@ -698,36 +808,124 @@ p {
     }
 
     .nav-container {
-        padding: 1rem 15px;
+        padding: 0.8rem 15px;
+    }
+
+    .nav-logo h2 {
+        font-size: 1.2rem;
+    }
+
+    .nav-logo span {
+        font-size: 0.8rem;
     }
 
     .hero {
-        padding-top: 80px;
+        padding-top: 70px;
+        padding-bottom: 40px;
+    }
+
+    .hero-content {
+        padding: 1rem 15px;
+        gap: 2rem;
     }
 
     .section-header {
         margin-bottom: 2rem;
+        padding: 0 0.5rem;
     }
 
     .about, .services, .properties, .contact {
-        padding: 60px 0;
+        padding: 40px 0;
     }
 
     .service-card, .contact-card, .form {
-        padding: 1.5rem;
+        padding: 1.2rem;
+        margin: 0 0.5rem;
     }
 
     .profile-photo {
-        width: 250px;
-        height: 250px;
+        width: 220px;
+        height: 220px;
+    }
+
+    .image-frame {
+        width: 240px;
+        height: 300px;
     }
 
     .hero-stats {
         gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .stat {
+        min-width: 80px;
     }
 
     .stat-number {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        padding: 0 0.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .hero-text p {
+        font-size: 0.95rem;
+        padding: 0 0.5rem;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 250px;
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+
+    .property-details {
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .property-details span {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .social-icon {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 0.9rem;
     }
 }
 
